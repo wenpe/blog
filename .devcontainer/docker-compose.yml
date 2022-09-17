@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  node:
+    image: node:16.17.0-bullseye
+    working_dir: /workspace
+    volumes:
+      - node-modules:/workspace/node_modules
+      - ..:/workspace:cached
+    tty: true
+
+volumes:
+  node-modules:
