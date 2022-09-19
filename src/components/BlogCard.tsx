@@ -6,9 +6,9 @@ import {
   CardActions,
   CardActionArea,
   Stack,
-  Chip
+  Chip,
 } from '@mui/material';
-import { Tag } from 'types/blog'
+import { Tag } from 'types/blog';
 import { css } from '@mui/styled-engine';
 
 const cardStyle = css`
@@ -43,11 +43,11 @@ export const BlogCard = ({ imagePath, imageAlt, title, tags }: BlogCard) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Stack direction="row" spacing={1}>
+          <Stack direction='row' spacing={1}>
             {tags.map((tag) => (
-              <Chip key={tag.id} label={'#' + tag.tag} variant="outlined" />
-              ))}
-            </Stack>
+              <Chip key={tag.id} label={'#' + tag.tag} variant='outlined' />
+            ))}
+          </Stack>
         </CardActions>
       </CardActionArea>
     </Card>

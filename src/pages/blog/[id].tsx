@@ -4,6 +4,9 @@ import type { Blog } from 'types/blog';
 import { ParsedUrlQuery } from 'node:querystring';
 import { AppBar, Box, Typography, Container, Paper, Chip, Stack } from '@mui/material';
 import { NextMuiLink } from 'components/NextMuiLink';
+import cheerio from 'cheerio';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/a11y-dark.css';
 
 interface Props {
   blog: Blog;
@@ -22,11 +25,18 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
   const id = context.params?.id;
-  const data = await client.get({ endpoint: 'blog', contentId: id });
+  const blog = await client.get({ endpoint: 'blog', contentId: id });
+
+  const $ = cheerio.load(blog.body);
+  $('pre code').each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text());
+    $(elm).html(result.value);
+    $(elm).addClass('hljs');
+  });
 
   return {
     props: {
-      blog: data,
+      blog: { ...blog, body: $.html() },
     },
   };
 };
@@ -51,7 +61,7 @@ const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog
       </AppBar>
       <Container maxWidth='xl' sx={{ marginTop: `20px` }}>
         <Box>
-          <Paper elevation={3} sx={{padding: `30px`}}>
+          <Paper elevation={3} sx={{ padding: `30px` }}>
             <h1>{blog.title}</h1>
 
             <div
@@ -60,9 +70,9 @@ const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog
               }}
             />
             {/* <p>{blog.publishedAt}</p> */}
-            <Stack direction="row" spacing={1}>
-            {blog.tags.map((tag) => (
-              <Chip key={tag.id} label={'#' + tag.tag} variant="outlined" />
+            <Stack direction='row' spacing={1}>
+              {blog.tags.map((tag) => (
+                <Chip key={tag.id} label={'#' + tag.tag} variant='outlined' />
               ))}
             </Stack>
           </Paper>

@@ -23,7 +23,7 @@ type Props = {
   tags: Tag[];
 };
 
-const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs, tags }: Props) => {
+const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs }: Props) => {
   return (
     <div>
       <AppBar position='static' sx={{ boxShadow: `none` }}>
@@ -51,7 +51,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs,
             <Grid key={blog.id} item xs={12} md={6} lg={4}>
               <NextMuiLink href={`/blog/${blog.id}`}>
                 <BlogCard
-                  imagePath='/images/blog/fauaerhhr.jpg'
+                  imagePath={blog.image.image.url}
                   imageAlt='Image Not Found'
                   title={blog.title}
                   tags={blog.tags}
