@@ -1,0 +1,21 @@
+name: Feature Request
+description: File a feature request
+title: "[Feature]: "
+assignees:
+  - wenpe
+body:
+  - type: input
+    id: feature-outline
+    attributes:
+      label: 機能の概要
+      description: 機能の概要を記載
+      placeholder: タグで記事を検索する機能
+    validations:
+      required: false
+  - type: textarea
+    id: detail
+    attributes:
+      label: 機能の詳細
+      description: 機能の詳細を記載してください
+    validations:
+      required: true
