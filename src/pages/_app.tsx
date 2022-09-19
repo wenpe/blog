@@ -7,6 +7,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from 'styles/theme';
 import createEmotionCache from 'styles/createEmotionCache';
+import nextSeoConfig from 'nextSeoConfig';
+import { DefaultSeo } from 'next-seo';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -20,6 +22,7 @@ function MyApp(props: MyAppProps) {
 
   return (
     <CacheProvider value={emotionCache}>
+      <DefaultSeo {...nextSeoConfig} />
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />

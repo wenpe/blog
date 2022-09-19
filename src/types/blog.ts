@@ -4,6 +4,7 @@ export type Blog = {
   title: string;
   tags: Tag[];
   image: Image;
+  description: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

@@ -7,6 +7,7 @@ import { NextMuiLink } from 'components/NextMuiLink';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/a11y-dark.css';
+import { NextSeo } from 'next-seo'
 
 interface Props {
   blog: Blog;
@@ -44,6 +45,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
 const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }: Props) => {
   return (
     <div>
+      <NextSeo title={blog.title} description={blog.description} />
       <AppBar position='static' sx={{ boxShadow: `none` }}>
         <Container maxWidth='xl'>
           <Box
