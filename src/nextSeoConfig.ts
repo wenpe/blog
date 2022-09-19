@@ -1,7 +1,7 @@
 const nextSeoConfig = {
   titleTemplate: '%s | Wenpe Blog',
   defaultTitle: 'Home | Wenpe Blog',
-  canonical: 'https://wenpe-blog.vercel.app/',
+  canonical: 'https://wenpe-playground.com/',
   description: 'エンジニアのwenpeです。ITのことや、それ以外のことなど、適当に発信しています。',
   additionalMetaTags: [
     {
@@ -14,7 +14,7 @@ const nextSeoConfig = {
     },
   ],
   openGraph: {
-    url: 'https://wenpe-blog.vercel.app/',
+    url: 'https://wenpe-playground.com/',
     type: 'website',
     locale: 'ja_JP',
     title: 'Home',

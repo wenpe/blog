@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
 const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }: Props) => {
   return (
     <div>
-      <NextSeo title={blog.title} description={blog.description} />
+      <NextSeo title={blog.title} description={blog.description} canonical={'https://wenpe-playground.com//blog/' + blog.id} />
       <AppBar position='static' sx={{ boxShadow: `none` }}>
         <Container maxWidth='xl'>
           <Box
