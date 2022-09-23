@@ -54,10 +54,10 @@ const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog
       <Global
         styles={css`
           code {
-            display: inline-block;
             padding: 0.1em 0.1em;
             background-color: #e7edf3;
             border-radius: 3px;
+            word-wrap: break-word;
           }
           ,
           .pHasImg {
