@@ -7,7 +7,8 @@ import { NextMuiLink } from 'components/NextMuiLink';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/a11y-dark.css';
-import { NextSeo } from 'next-seo'
+import { NextSeo } from 'next-seo';
+import { Global, css } from '@emotion/react';
 
 interface Props {
   blog: Blog;
@@ -35,6 +36,11 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
     $(elm).addClass('hljs');
   });
 
+  $('p:has(img)').each((_, elm) => {
+    $(elm).html();
+    $(elm).addClass('pHasImg');
+  });
+
   return {
     props: {
       blog: { ...blog, body: $.html() },
@@ -45,7 +51,25 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
 const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }: Props) => {
   return (
     <div>
-      <NextSeo title={blog.title} description={blog.description} canonical={'https://wenpe-playground.com//blog/' + blog.id} />
+      <Global
+        styles={css`
+          code {
+            display: inline-block;
+            padding: 0.1em 0.1em;
+            background-color: #e7edf3;
+            border-radius: 3px;
+          }
+          ,
+          .pHasImg {
+            overflow: auto;
+          }
+        `}
+      />
+      <NextSeo
+        title={blog.title}
+        description={blog.description}
+        canonical={'https://wenpe-playground.com//blog/' + blog.id}
+      />
       <AppBar position='static' sx={{ boxShadow: `none` }}>
         <Container maxWidth='xl'>
           <Box
