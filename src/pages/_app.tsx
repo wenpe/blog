@@ -1,7 +1,5 @@
-import * as React from 'react';
-import { AppProps } from 'next/app';
+import type { AppPropsWithLayout } from 'types/layout';
 import PropTypes from 'prop-types';
-import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
@@ -13,14 +11,15 @@ import { DefaultSeo } from 'next-seo';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-interface MyAppProps extends AppProps {
+interface MyAppProps extends AppPropsWithLayout {
   emotionCache?: EmotionCache;
 }
 
 function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const getLayout = Component.getLayout ?? ((page) => page);
 
-  return (
+  return getLayout(
     <CacheProvider value={emotionCache}>
       <DefaultSeo {...nextSeoConfig} />
       <ThemeProvider theme={theme}>
@@ -28,7 +27,7 @@ function MyApp(props: MyAppProps) {
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </CacheProvider>
+    </CacheProvider>,
   );
 }
 

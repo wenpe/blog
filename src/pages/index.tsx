@@ -1,9 +1,12 @@
-import type { InferGetStaticPropsType, NextPage } from 'next';
+import type { ReactElement } from 'react';
+import type { InferGetStaticPropsType } from 'next';
+import type { NextPageWithLayout } from 'types/layout';
 import { client } from 'libs/client';
 import type { Blog, Tag } from 'types/blog';
-import { AppBar, Box, Typography, Container, Grid, Divider } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import { BlogCard } from 'components/BlogCard';
 import { NextMuiLink } from 'components/NextMuiLink';
+import { Layout } from 'components/Laytout';
 
 // Get blog and tags data
 export const getStaticProps = async () => {
@@ -23,25 +26,11 @@ type Props = {
   tags: Tag[];
 };
 
-const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs }: Props) => {
+const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  blogs,
+}: Props) => {
   return (
     <div>
-      <AppBar position='static' sx={{ boxShadow: `none` }}>
-        <Container maxWidth='xl'>
-          <Box
-            sx={{
-              display: `flex`,
-              alignItems: `center`,
-              height: `70px`,
-            }}
-          >
-            <NextMuiLink href='/'>
-              <Typography sx={{ fontSize: `25px` }}>Wenpe Blog</Typography>
-            </NextMuiLink>
-          </Box>
-        </Container>
-      </AppBar>
-      <Divider light sx={{ borderColor: `rgba(211, 211, 211, .3)` }} />
       <Container maxWidth='xl' sx={{ marginTop: `20px` }}>
         <Grid container rowSpacing={2} columnSpacing={2}>
           {blogs.map((blog) => (
@@ -60,6 +49,10 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs 
       </Container>
     </div>
   );
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Home;

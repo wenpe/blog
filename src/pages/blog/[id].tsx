@@ -2,13 +2,15 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } fro
 import { client } from 'libs/client';
 import type { Blog } from 'types/blog';
 import { ParsedUrlQuery } from 'node:querystring';
-import { AppBar, Box, Typography, Container, Paper, Chip, Stack, Divider } from '@mui/material';
-import { NextMuiLink } from 'components/NextMuiLink';
+import { Box, Container, Paper, Chip, Stack } from '@mui/material';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/a11y-dark.css';
 import { NextSeo } from 'next-seo';
 import { Global, css } from '@emotion/react';
+import type { NextPageWithLayout } from 'types/layout';
+import type { ReactElement } from 'react';
+import { Layout } from 'components/Laytout';
 
 interface Props {
   blog: Blog;
@@ -48,7 +50,9 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
   };
 };
 
-const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog }: Props) => {
+const BlogId: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  blog,
+}: Props) => {
   return (
     <div>
       <Global
@@ -70,22 +74,6 @@ const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog
         description={blog.description}
         canonical={'https://wenpe-playground.com//blog/' + blog.id}
       />
-      <AppBar position='static' sx={{ boxShadow: `none` }}>
-        <Container maxWidth='xl'>
-          <Box
-            sx={{
-              display: `flex`,
-              alignItems: `center`,
-              height: `70px`,
-            }}
-          >
-            <NextMuiLink href='/'>
-              <Typography sx={{ fontSize: `25px` }}>Wenpe Blog</Typography>
-            </NextMuiLink>
-          </Box>
-        </Container>
-      </AppBar>
-      <Divider light sx={{ borderColor: `rgba(211, 211, 211, .3)` }} />
       <Container maxWidth='xl' sx={{ marginTop: `20px` }}>
         <Box>
           <Paper elevation={3} sx={{ padding: `30px` }}>
@@ -107,6 +95,10 @@ const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog
       </Container>
     </div>
   );
+};
+
+BlogId.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export default BlogId;
