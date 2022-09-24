@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } fro
 import { client } from 'libs/client';
 import type { Blog } from 'types/blog';
 import { ParsedUrlQuery } from 'node:querystring';
-import { AppBar, Box, Typography, Container, Paper, Chip, Stack } from '@mui/material';
+import { AppBar, Box, Typography, Container, Paper, Chip, Stack, Divider } from '@mui/material';
 import { NextMuiLink } from 'components/NextMuiLink';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js';
@@ -85,6 +85,7 @@ const BlogId: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blog
           </Box>
         </Container>
       </AppBar>
+      <Divider light sx={{ borderColor: `rgba(211, 211, 211, .3)` }} />
       <Container maxWidth='xl' sx={{ marginTop: `20px` }}>
         <Box>
           <Paper elevation={3} sx={{ padding: `30px` }}>
