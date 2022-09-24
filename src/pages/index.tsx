@@ -41,13 +41,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs 
           </Box>
         </Container>
       </AppBar>
-      <Divider light sx={{borderColor:`rgba(211, 211, 211, .3)`}} />
+      <Divider light sx={{ borderColor: `rgba(211, 211, 211, .3)` }} />
       <Container maxWidth='xl' sx={{ marginTop: `20px` }}>
-        <Grid
-          container
-          rowSpacing={2}
-          columnSpacing={2}
-        >
+        <Grid container rowSpacing={2} columnSpacing={2}>
           {blogs.map((blog) => (
             <Grid key={blog.id} item xs={12} md={6} lg={4}>
               <NextMuiLink href={`/blog/${blog.id}`}>
