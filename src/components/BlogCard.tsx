@@ -25,6 +25,15 @@ const buttonStyle = css`
   }
 `;
 
+const cardTitle = css`
+  font-weight: bold;
+  height: 60px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+`;
+
 type BlogCard = {
   imagePath: string;
   imageAlt: string;
@@ -38,7 +47,7 @@ export const BlogCard = ({ imagePath, imageAlt, title, tags }: BlogCard) => {
       <CardActionArea css={buttonStyle}>
         <CardMedia component='img' height='170' image={imagePath} alt={imageAlt} />
         <CardContent>
-          <Typography gutterBottom variant='h5' component='div'>
+          <Typography variant='h6' component='div' css={cardTitle}>
             {title}
           </Typography>
         </CardContent>
