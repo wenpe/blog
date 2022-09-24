@@ -1,7 +1,7 @@
 import type { InferGetStaticPropsType, NextPage } from 'next';
 import { client } from 'libs/client';
 import type { Blog, Tag } from 'types/blog';
-import { AppBar, Box, Typography, Container, Grid } from '@mui/material';
+import { AppBar, Box, Typography, Container, Grid, Divider } from '@mui/material';
 import { BlogCard } from 'components/BlogCard';
 import { NextMuiLink } from 'components/NextMuiLink';
 
@@ -41,11 +41,12 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ blogs 
           </Box>
         </Container>
       </AppBar>
+      <Divider light sx={{borderColor:`rgba(211, 211, 211, .3)`}} />
       <Container maxWidth='xl' sx={{ marginTop: `20px` }}>
         <Grid
           container
-          rowSpacing={{ xs: 1, sm: 2, md: 3 }}
-          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          rowSpacing={2}
+          columnSpacing={2}
         >
           {blogs.map((blog) => (
             <Grid key={blog.id} item xs={12} md={6} lg={4}>
