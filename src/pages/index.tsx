@@ -53,7 +53,6 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
                     imageAlt='Image Not Found'
                     title={blog.title}
                     tags={blog.tags}
-                    className='blogCaa'
                   ></BlogCard>
                 </div>
               </NextMuiLink>

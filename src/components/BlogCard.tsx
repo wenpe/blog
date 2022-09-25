@@ -39,12 +39,11 @@ type BlogCard = {
   imageAlt: string;
   title: string;
   tags: Tag[];
-  className: string;
 };
 
-export const BlogCard = ({ imagePath, imageAlt, title, tags, className }: BlogCard) => {
+export const BlogCard = ({ imagePath, imageAlt, title, tags }: BlogCard) => {
   return (
-    <Card sx={{ maxWidth: 400 }} css={cardStyle} className={className}>
+    <Card sx={{ maxWidth: 400 }} css={cardStyle}>
       <CardActionArea css={buttonStyle}>
         <CardMedia component='img' height='170' image={imagePath} alt={imageAlt} />
         <CardContent>
