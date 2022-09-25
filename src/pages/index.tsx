@@ -1,5 +1,6 @@
-import { ReactElement, useEffect } from 'react';
-import type { InferGetStaticPropsType } from 'next';
+import { ReactElement } from 'react';
+import {useIsomorphicLayoutEffect} from 'react-use'
+import type { GetServerSideProps, InferGetStaticPropsType } from 'next';
 import type { NextPageWithLayout } from 'types/layout';
 import { client } from 'libs/client';
 import type { Blog, Tag } from 'types/blog';
@@ -10,7 +11,7 @@ import { Layout } from 'components/Laytout';
 import { gsap } from 'gsap';
 
 // Get blog and tags data
-export const getStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const blog = await client.get({ endpoint: 'blog' });
   const tag = await client.get({ endpoint: 'tag' });
 
@@ -27,12 +28,11 @@ type Props = {
   tags: Tag[];
 };
 
-const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({
+const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = ({
   blogs,
 }: Props) => {
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     gsap.from('.blogCard', {
-      delay: 0.2,
       y: 30,
       duration: 0.7,
       autoAlpha: 0,
@@ -40,7 +40,7 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
         each: 0.2,
       },
     });
-  },[]);
+  });
   return (
     <div>
       <Container maxWidth='xl' sx={{ marginTop: `20px` }}>
