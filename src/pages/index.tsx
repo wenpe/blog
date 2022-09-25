@@ -32,6 +32,7 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
 }: Props) => {
   useEffect(() => {
     gsap.from('.blogCard', {
+      delay: 0.2,
       y: 30,
       duration: 0.7,
       autoAlpha: 0,
@@ -39,7 +40,7 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
         each: 0.2,
       },
     });
-  });
+  },[]);
   return (
     <div>
       <Container maxWidth='xl' sx={{ marginTop: `20px` }}>
