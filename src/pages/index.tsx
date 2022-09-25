@@ -31,16 +31,15 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
   blogs,
 }: Props) => {
   useEffect(() => {
-    const tl = gsap
-      .from('.blogCard', {
-        lazy: false,
-        y: 30,
-        duration: 0.7,
-        autoAlpha: 0,
-        stagger: {
-          each: 0.2
-        },
-      })
+    gsap.from('.blogCard', {
+      lazy: false,
+      y: 30,
+      duration: 0.7,
+      autoAlpha: 0,
+      stagger: {
+        each: 0.2,
+      },
+    });
   });
   return (
     <div>
@@ -49,14 +48,13 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
           {blogs.map((blog) => (
             <Grid key={blog.id} item xs={12} md={6} lg={4}>
               <NextMuiLink href={`/blog/${blog.id}`}>
-                <div className='blogCard'>
                 <BlogCard
                   imagePath={blog.image.image.url}
                   imageAlt='Image Not Found'
                   title={blog.title}
                   tags={blog.tags}
-                  ></BlogCard>
-                  </div>
+                  className='blogCard'
+                ></BlogCard>
               </NextMuiLink>
             </Grid>
           ))}
