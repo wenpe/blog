@@ -48,14 +48,14 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
             <Grid key={blog.id} item xs={12} md={6} lg={4}>
               <NextMuiLink href={`/blog/${blog.id}`}>
                 <div className='blogCard'>
-                <BlogCard
-                  imagePath={blog.image.image.url}
-                  imageAlt='Image Not Found'
-                  title={blog.title}
-                  tags={blog.tags}
-                  className='blogCaa'
+                  <BlogCard
+                    imagePath={blog.image.image.url}
+                    imageAlt='Image Not Found'
+                    title={blog.title}
+                    tags={blog.tags}
+                    className='blogCaa'
                   ></BlogCard>
-                  </div>
+                </div>
               </NextMuiLink>
             </Grid>
           ))}
