@@ -36,9 +36,9 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
         lazy: false,
         y: 30,
         duration: 1,
-        autoAlpha: 0.2,
+        autoAlpha: 0,
         stagger: {
-          each: 0.2
+          each: 0.1
         },
       })
   });
