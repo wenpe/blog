@@ -1,6 +1,6 @@
 const nextSeoConfig = {
-  titleTemplate: '%s | Wenpe Blog',
-  defaultTitle: 'Home | Wenpe Blog',
+  titleTemplate: '%s | Wenpe Playground',
+  defaultTitle: 'Home | Wenpe Playground',
   canonical: 'https://wenpe-playground.com/',
   description: 'エンジニアのwenpeです。ITのことや、それ以外のことなど、適当に発信しています。',
   additionalMetaTags: [
@@ -10,7 +10,7 @@ const nextSeoConfig = {
     },
     {
       name: 'application-name',
-      content: 'Wenpe Blog',
+      content: 'Wenpe Playground',
     },
   ],
   openGraph: {
@@ -19,7 +19,16 @@ const nextSeoConfig = {
     locale: 'ja_JP',
     title: 'Home',
     description: 'エンジニアのwenpeです。ITのことや、それ以外のことなど、適当に発信しています。',
-    site_name: 'Wenpe Blog',
+    site_name: 'Wenpe Playground',
+    images: [
+      {
+      　url: "https://images.microcms-assets.io/assets/885d2f8a9001437884ab24d84c00b5d7/2ba5bc0d3d54481988441affeceef41a/codehighlihgt.png",
+        width: 800,
+        height: 600,
+        alt: 'Og Image Alt',
+        type: 'image/jpeg',
+      },
+    ]
   },
   twitter: {
     handle: '@wenpe2567',

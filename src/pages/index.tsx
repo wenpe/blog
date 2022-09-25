@@ -1,4 +1,4 @@
-import { ReactElement, useRef, useEffect } from 'react';
+import { ReactElement, useEffect } from 'react';
 import type { InferGetStaticPropsType } from 'next';
 import type { NextPageWithLayout } from 'types/layout';
 import { client } from 'libs/client';
