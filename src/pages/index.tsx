@@ -32,14 +32,13 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
 }: Props) => {
   useEffect(() => {
     const tl = gsap
-      .timeline()
       .from('.blogCard', {
-        scale: 0,
-        rotation: -360,
+        lazy: false,
+        y: 30,
         duration: 1,
+        autoAlpha: 0.2,
         stagger: {
-          each: 0.1,
-          grid: 'auto', // 格子状に開始
+          each: 0.2
         },
       })
   });
