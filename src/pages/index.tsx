@@ -35,10 +35,10 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
       .from('.blogCard', {
         lazy: false,
         y: 30,
-        duration: 1,
+        duration: 0.7,
         autoAlpha: 0,
         stagger: {
-          each: 0.1
+          each: 0.2
         },
       })
   });
