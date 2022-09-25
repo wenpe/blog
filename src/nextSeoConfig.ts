@@ -30,7 +30,7 @@ const nextSeoConfig = {
   twitter: {
     handle: '@wenpe2567',
     site: '@wenpe2567',
-    cardType: 'summary_large_image',
+    cardType: 'summary',
     image: "https://images.microcms-assets.io/assets/885d2f8a9001437884ab24d84c00b5d7/2ba5bc0d3d54481988441affeceef41a/codehighlihgt.png",
   },
 };
