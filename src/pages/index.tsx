@@ -32,7 +32,6 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
 }: Props) => {
   useEffect(() => {
     gsap.from('.blogCard', {
-      lazy: false,
       y: 30,
       duration: 0.7,
       autoAlpha: 0,
