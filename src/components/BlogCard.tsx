@@ -43,7 +43,7 @@ type BlogCard = {
 
 export const BlogCard = ({ imagePath, imageAlt, title, tags }: BlogCard) => {
   return (
-    <Card sx={{ maxWidth: 400 }} css={cardStyle}>
+    <Card sx={{ maxWidth: 400 }} css={cardStyle} >
       <CardActionArea css={buttonStyle}>
         <CardMedia component='img' height='170' image={imagePath} alt={imageAlt} />
         <CardContent>
