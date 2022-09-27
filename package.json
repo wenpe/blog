@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint --dir src",
     "lint:fix": "eslint src --ext .js,jsx,.ts,.tsx --fix",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'"
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.3",
@@ -22,6 +23,7 @@
     "microcms-js-sdk": "^2.2.1",
     "next": "12.3.0",
     "next-seo": "^5.5.0",
+    "next-sitemap": "^3.1.23",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
