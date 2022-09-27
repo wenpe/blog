@@ -2,6 +2,6 @@
 /** @type {import('next-sitemap').IConfig} */
 
 module.exports = {
-  siteUrl: `https://https://wenpe-playground.com/`,
+  siteUrl: `https://wenpe-playground.com/`,
   generateRobotsTxt: true,
 };
