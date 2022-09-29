@@ -58,7 +58,7 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps
           {blogs.map((blog) => (
             <Grid key={blog.id} item xs={12} md={6} lg={4}>
               <NextMuiLink href={`/blog/${blog.id}`}>
-                <div className='blogCard' style={{ opacity: 0 } }>
+                <div className='blogCard' style={{ opacity: 0 }}>
                   <BlogCard
                     imagePath={blog.image.image.url}
                     imageAlt='Image Not Found'
