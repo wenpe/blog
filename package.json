@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.2",
+    "@svgr/webpack": "^6.4.0",
     "@types/cheerio": "^0.22.31",
     "@types/highlightjs": "^9.12.2",
     "@types/node": "18.7.18",

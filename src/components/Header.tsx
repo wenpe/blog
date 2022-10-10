@@ -1,7 +1,6 @@
 import { AppBar, Box, Container, Divider } from '@mui/material';
 import Image from 'next/image';
 import { NextMuiLink } from 'components/NextMuiLink';
-import testImg from '../../public/image/wenpe_icon.svg';
 
 export const Header = () => {
   return (
