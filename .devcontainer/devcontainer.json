@@ -3,10 +3,14 @@
   "dockerComposeFile": ["./docker-compose.yml"],
   "service": "node",
   "workspaceFolder": "/workspace",
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "bash"
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+    }
   },
-  "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
-  "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh",
-  "postStartCommand": "bash ./.devcontainer/postStartCommand.sh"
+  "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+  "postStartCommand": "./.devcontainer/postStartCommand.sh"
 }
