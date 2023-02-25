@@ -11,7 +11,12 @@ import { gsap, Power4 } from 'gsap';
 
 // Get blog and tags data
 export const getServerSideProps = async () => {
-  const blog = await client.get({ endpoint: 'blog' });
+  const blog = await client.get({
+    endpoint: 'blog',
+    queries: {
+      limit: 20,
+    },
+  });
   const tag = await client.get({ endpoint: 'tag' });
 
   return {
