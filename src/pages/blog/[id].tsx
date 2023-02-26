@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType, NextPage } fro
 import { client } from 'libs/client';
 import type { Blog } from 'types/blog';
 import { ParsedUrlQuery } from 'node:querystring';
-import { Box, Container, Paper, Chip, Stack } from '@mui/material';
+import { Box, Container, Paper, Chip, Stack, Typography } from '@mui/material';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/a11y-dark.css';
@@ -11,6 +11,9 @@ import { Global, css } from '@emotion/react';
 import type { NextPageWithLayout } from 'types/layout';
 import type { ReactElement } from 'react';
 import { Layout } from 'components/Laytout';
+import UpdateIcon from '@mui/icons-material/Update';
+import { getFormattedDate } from 'libs/getFormattedDate';
+import Image from 'mui-image';
 
 interface Props {
   blog: Blog;
@@ -79,9 +82,36 @@ const BlogId: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>>
         description={blog.description}
         canonical={'https://wenpe-playground.com//blog/' + blog.id}
       />
-      <Container maxWidth='xl' sx={{ marginTop: `20px` }}>
+      <Container maxWidth='lg' sx={{ marginTop: `20px` }}>
         <Box>
-          <Paper elevation={3} sx={{ padding: `30px` }}>
+          <Paper elevation={0} variant='outlined' square sx={{ padding: `30px` }}>
+            <Stack justifyContent='center' alignItems='center'>
+              <Image src={blog.image.image.url} alt='Image Not Found' width='70%' easing='unset' />
+            </Stack>
+            <Stack direction='row' spacing={1}>
+              {blog.tags.map((tag) => (
+                <Chip
+                  key={tag.id}
+                  label={'#' + tag.tag}
+                  variant='outlined'
+                  style={{
+                    marginTop: 10,
+                  }}
+                />
+              ))}
+            </Stack>
+            <Stack
+              direction='row'
+              spacing={0.5}
+              alignItems='center'
+              style={{
+                marginTop: 10,
+              }}
+            >
+              <UpdateIcon fontSize='small' />
+              <Typography>{getFormattedDate(blog.revisedAt, 'yyyy.MM.dd')}</Typography>
+            </Stack>
+
             <h1>{blog.title}</h1>
 
             <div
@@ -90,11 +120,6 @@ const BlogId: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>>
               }}
             />
             {/* <p>{blog.publishedAt}</p> */}
-            <Stack direction='row' spacing={1}>
-              {blog.tags.map((tag) => (
-                <Chip key={tag.id} label={'#' + tag.tag} variant='outlined' />
-              ))}
-            </Stack>
           </Paper>
         </Box>
       </Container>
