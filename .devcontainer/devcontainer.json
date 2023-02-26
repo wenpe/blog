@@ -6,7 +6,8 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.fontSize": 14
       },
       "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
     }
