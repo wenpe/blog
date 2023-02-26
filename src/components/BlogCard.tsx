@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { Tag } from 'types/blog';
 import { css } from '@mui/styled-engine';
+import UpdateIcon from '@mui/icons-material/Update';
 
 const cardStyle = css`
   transition: all 0.2s;
@@ -39,9 +40,10 @@ type BlogCard = {
   imageAlt: string;
   title: string;
   tags: Tag[];
+  revisedAt: string;
 };
 
-export const BlogCard = ({ imagePath, imageAlt, title, tags }: BlogCard) => {
+export const BlogCard = ({ imagePath, imageAlt, title, tags, revisedAt }: BlogCard) => {
   return (
     <Card sx={{ maxWidth: 400 }} css={cardStyle}>
       <CardActionArea css={buttonStyle}>
@@ -56,6 +58,12 @@ export const BlogCard = ({ imagePath, imageAlt, title, tags }: BlogCard) => {
             {tags.map((tag) => (
               <Chip key={tag.id} label={'#' + tag.tag} variant='outlined' />
             ))}
+          </Stack>
+        </CardActions>
+        <CardActions>
+          <Stack direction='row' spacing={0.5} alignItems='center'>
+            <UpdateIcon fontSize='small' />
+            <Typography>{revisedAt}</Typography>
           </Stack>
         </CardActions>
       </CardActionArea>

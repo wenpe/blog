@@ -8,6 +8,7 @@ import { BlogCard } from 'components/BlogCard';
 import { NextMuiLink } from 'components/NextMuiLink';
 import { Layout } from 'components/Laytout';
 import { gsap, Power4 } from 'gsap';
+import { getFormattedDate } from 'libs/getFormattedDate';
 
 type Props = {
   blogs: Blog[];
@@ -60,7 +61,7 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
       <Container maxWidth='xl' sx={{ marginTop: `20px` }}>
         <Grid container rowSpacing={2} columnSpacing={2}>
           {blogs.map((blog) => (
-            <Grid key={blog.id} item xs={12} md={6} lg={4}>
+            <Grid key={blog.id} item xs={12} md={6} lg={3}>
               <NextMuiLink href={`/blog/${blog.id}`}>
                 <div className='blogCard' style={{ opacity: 0 }}>
                   <BlogCard
@@ -68,6 +69,7 @@ const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> =
                     imageAlt='Image Not Found'
                     title={blog.title}
                     tags={blog.tags}
+                    revisedAt={getFormattedDate(blog.revisedAt, 'yyyy.MM.dd')}
                   ></BlogCard>
                 </div>
               </NextMuiLink>
