@@ -1,5 +1,5 @@
 import { ReactElement, useEffect } from 'react';
-import type { InferGetStaticPropsType } from 'next';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import type { NextPageWithLayout } from 'types/layout';
 import { client } from 'libs/client';
 import type { Blog, Tag } from 'types/blog';
@@ -9,8 +9,12 @@ import { NextMuiLink } from 'components/NextMuiLink';
 import { Layout } from 'components/Laytout';
 import { gsap, Power4 } from 'gsap';
 
-// Get blog and tags data
-export const getServerSideProps = async () => {
+type Props = {
+  blogs: Blog[];
+  tags: Tag[];
+};
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const blog = await client.get({
     endpoint: 'blog',
     queries: {
@@ -27,12 +31,7 @@ export const getServerSideProps = async () => {
   };
 };
 
-type Props = {
-  blogs: Blog[];
-  tags: Tag[];
-};
-
-const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getServerSideProps>> = ({
+const Home: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>> = ({
   blogs,
 }: Props) => {
   useEffect(() => {

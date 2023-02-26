@@ -21,9 +21,14 @@ interface Params extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data = await client.get({ endpoint: 'blog' });
-
+  const data = await client.get({
+    endpoint: 'blog',
+    queries: {
+      limit: 20,
+    },
+  });
   const paths = data.contents.map((content: Blog) => `/blog/${content.id}`);
+
   return { paths, fallback: false };
 };
 
