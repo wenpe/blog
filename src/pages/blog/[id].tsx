@@ -77,9 +77,12 @@ const BlogId: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>>
             word-wrap: break-word;
           }
           ,
+          .pHasImg {
+            overflow: auto;
+          },
           .orgLi {
             overflow-wrap: break-word;
-          }
+          },
         `}
       />
       <NextSeo
