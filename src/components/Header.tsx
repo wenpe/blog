@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Button from '@mui/material/Button';
+import { MarginOutlined } from '@mui/icons-material';
 
 type page = {
   title: string;
@@ -92,7 +93,7 @@ export const Header = () => {
                 </NextMuiLink>
               ))}
             </Box>
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'space-between' }}>
               <IconButton
                 size='large'
                 aria-controls='menu-appbar'
@@ -135,14 +136,13 @@ export const Header = () => {
                   </NextMuiLink>
                 ))}
               </Menu>
-              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-                <NextMuiLink href='/'>
+              <NextMuiLink href='/'>
                   <Box
                     sx={{
                       display: { xs: 'flex', md: 'none' },
                       alignItems: `center`,
-                      height: `70px`,
-                      marginRight: `20px`,
+                    height: `70px`
+                      ,marginLeft: `-40px`
                     }}
                   >
                     <Box sx={{ marginRight: `10px` }}>
@@ -160,8 +160,8 @@ export const Header = () => {
                       height={45}
                     />
                   </Box>
-                </NextMuiLink>
-              </Box>
+              </NextMuiLink>
+              <Box></Box>
             </Box>
           </Box>
         </Container>
