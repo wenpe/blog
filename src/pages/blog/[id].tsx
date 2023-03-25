@@ -51,6 +51,11 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
     $(elm).addClass('pHasImg');
   });
 
+  $('li').each((_, elm) => {
+    $(elm).html();
+    $(elm).addClass('orgLi');
+  });
+
   return {
     props: {
       blog: { ...blog, body: $.html() },
@@ -72,8 +77,8 @@ const BlogId: NextPageWithLayout<InferGetStaticPropsType<typeof getStaticProps>>
             word-wrap: break-word;
           }
           ,
-          .pHasImg {
-            overflow: auto;
+          .orgLi {
+            overflow-wrap: break-word;
           }
         `}
       />
